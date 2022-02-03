@@ -100,7 +100,7 @@
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
 	      <url>http://65.0.176.82:8081/repository/facebook-release/</url>
-              </repository	    
+		</repository>	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
