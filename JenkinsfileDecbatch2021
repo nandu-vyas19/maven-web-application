@@ -3,7 +3,7 @@ node{
     def mavenHome= tool name: "maven3.8.4"
     //Get the code from github repo
     stage('checkout'){
-     git branch: 'development', credentialsId: 'f8b303fd-bc5a-4469-ad27-8e6948b2fc8c', url: 'https://github.com/nandu-vyas19/maven-web-application.git'
+     git branch: 'development', credentialsId: 'ec6d7b4b-b628-4d26-8588-58d02d9ebf75', url: 'https://github.com/nandu-vyas19/maven-web-application.git'
  }
  //using maven doing the build
 stage('build'){
@@ -19,8 +19,8 @@ stage('build'){
   }
   //deploying application into tomcat
   stage('DeployAppintoTomcatserver'){
-    sshagent(['c889f7d6-b361-4045-ba5b-951834d022c9']){
-   sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.235.115.123:/opt/apache-tomcat-9.0.58/webapps/"        
+   sshagent(['ac3f4413-e0d0-4304-ae4d-5d290b38e9b0']) {
+   sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.109.154.163:/opt/apache-tomcat-9.0.58/webapps/"        
     } 
         
   }
