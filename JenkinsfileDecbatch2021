@@ -3,13 +3,10 @@ pipeline{
 agent any
 
 tools{
-maven 'maven3.8.2'
+maven 'maven3.8.4'
 
 }
 
-triggers{
-pollSCM('* * * * *')
-}
 
 options{
 timestamps()
@@ -20,8 +17,7 @@ stages{
 
   stage('CheckOutCode'){
     steps{
-    git branch: 'development', credentialsId: '957b543e-6f77-4cef-9aec-82e9b0230975', url: 'https://github.com/devopstrainingblr/maven-web-application-1.git'
-	
+    git branch: 'development', credentialsId: 'ec6d7b4b-b628-4d26-8588-58d02d9ebf75', url: 'https://github.com/nandu-vyas19/maven-web-application.git'
 	}
   }
   
@@ -45,8 +41,8 @@ stages{
   
   stage('DeployAppIntoTomcat'){
   steps{
-  sshagent(['bfe1b3c1-c29b-4a4d-b97a-c068b7748cd0']) {
-   sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@35.154.190.162:/opt/apache-tomcat-9.0.50/webapps/"    
+  sshagent(['ac3f4413-e0d0-4304-ae4d-5d290b38e9b0']) {
+   sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.109.154.163:/opt/apache-tomcat-9.0.58/webapps/"    
   }
   }
   }
