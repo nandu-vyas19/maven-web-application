@@ -3,7 +3,7 @@ pipeline{
 agent any
 
 tools{
-maven 'maven3.8.4'
+maven 'maven 3.8.4'
 
 }
 
@@ -17,7 +17,7 @@ stages{
 
   stage('CheckOutCode'){
     steps{
-    git branch: 'development', credentialsId: 'ec6d7b4b-b628-4d26-8588-58d02d9ebf75', url: 'https://github.com/nandu-vyas19/maven-web-application.git'
+    git branch: 'development', credentialsId: '9432a8cf-a5e4-4765-8bac-882c84e955cf', url: 'https://github.com/nandu-vyas19/maven-web-application.git'
 	}
   }
   
@@ -41,8 +41,8 @@ stages{
   
   stage('DeployAppIntoTomcat'){
   steps{
-  sshagent(['ac3f4413-e0d0-4304-ae4d-5d290b38e9b0']) {
-   sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.109.154.163:/opt/apache-tomcat-9.0.58/webapps/"    
+  sshagent(['891bca58-35d6-4945-909b-35e586dbaddf']) {
+   sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.1.108.21:/opt/apache-tomcat-9.0.63/webapps/"    
   }
   }
   }
